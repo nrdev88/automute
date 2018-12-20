@@ -5,12 +5,14 @@
 #import "MJDisableMuteManager.h"
 #import "StartAtLoginController.h"
 #import "MJSoundMuter.h"
+#import "MediaController.h"
 
 @interface AppDelegate () <MJMenuBarControllerDelegate, MJDisableMuteManagerDelegate>
 
 @property (nonatomic) SoundMuter *soundMuter;
 @property (nonatomic) HeadPhoneDetector *headphoneDetector;
 @property (nonatomic, strong) MJUserDefaults *userDefaults;
+@property (nonatomic, strong) MediaController *mediaController;
 @property(nonatomic, strong) MJMenuBarController *menuBarController;
 @property(nonatomic, strong) MJDisableMuteManager *disableMuteManager;
 @property(nonatomic, strong) StartAtLoginController *startAtLoginController;
@@ -32,6 +34,7 @@
     self.startAtLoginController = [[StartAtLoginController alloc] initWithIdentifier:@"com.yonilevy.automute.helper"];
 
     __weak AppDelegate *weakSelf = self;
+    
     self.headphoneDetector->listen(^(bool headphonesConnected) {
         [weakSelf onHeadphoneStateChangedTo:headphonesConnected];
     });
@@ -43,6 +46,10 @@
     } else if (![self.userDefaults didSeeLaunchAtLoginPopup]) {
         [self.menuBarController showLaunchAtLoginPopup];
     }
+    
+    self.mediaController = [[MediaController alloc] initWithUserDefaults:self.userDefaults];
+    
+    [self.mediaController checkForPermissions];
 
     [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self
                                                            selector:@selector(willSleep)
@@ -67,7 +74,6 @@
     self.didMuteOnLastSleep =
             [self menuBarController_isSetToMuteOnSleep] && !self.headphoneDetector->areHeadphonesConnected() && [self mute];
 }
-
 
 - (void)didWake
 {
@@ -95,6 +101,9 @@
     if (self.isMutingDisabled) return false;
 
     self.soundMuter->mute();
+    
+    [self.mediaController pauseAllMedia];
+    
     return true;
 }
 

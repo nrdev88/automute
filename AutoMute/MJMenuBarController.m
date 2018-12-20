@@ -210,12 +210,12 @@ static const NSInteger MENU_ITEM_DISABLE_FOREVER = 205;
 
 - (void)showHeadphonesDisconnectedMuteNotification
 {
-    [self showNotificationWithTitle:@"Headphones Disconnected" body:@"Sound Muted."];
+    [self showNotificationWithTitle:@"Headphones disconnected" body:@"Sound muted."];
 }
 
 - (void)showSleepMuteNotification
 {
-    [self showNotificationWithTitle:@"Woke up from sleep" body:@"Sound Muted."];
+    [self showNotificationWithTitle:@"Woke up from sleep" body:@"Sound muted."];
 }
 
 - (void)showNotificationWithTitle:(NSString *)title

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		17CA7E85D87F26DBC83DA1A8 /* libPods-automute.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EFC92B2673F8615F0D84EFCB /* libPods-automute.a */; };
+		415A432821CB9AFF006FC889 /* MediaController.m in Sources */ = {isa = PBXBuildFile; fileRef = 415A432721CB9AFF006FC889 /* MediaController.m */; };
 		E9395D7421A8814C0078CC5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9395D7321A8814C0078CC5C /* Assets.xcassets */; };
 		E9395D7721A8814C0078CC5C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9395D7521A8814C0078CC5C /* MainMenu.xib */; };
 		E9395D7A21A8814C0078CC5C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E9395D7921A8814C0078CC5C /* main.m */; };
@@ -58,6 +59,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		415A432421CB953E006FC889 /* iTunes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iTunes.h; sourceTree = "<group>"; };
+		415A432521CB953E006FC889 /* Spotify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spotify.h; sourceTree = "<group>"; };
+		415A432721CB9AFF006FC889 /* MediaController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MediaController.m; sourceTree = "<group>"; };
+		415A432921CB9B1C006FC889 /* MediaController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MediaController.h; sourceTree = "<group>"; };
 		CB270DC6A3FDDBD8AB59966F /* Pods-automute.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-automute.release.xcconfig"; path = "Pods/Target Support Files/Pods-automute/Pods-automute.release.xcconfig"; sourceTree = "<group>"; };
 		E9395D6D21A8814B0078CC5C /* AutoMute.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutoMute.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9395D7021A8814B0078CC5C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -124,6 +129,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		415A432621CB955D006FC889 /* ScriptingBridges */ = {
+			isa = PBXGroup;
+			children = (
+				415A432421CB953E006FC889 /* iTunes.h */,
+				415A432521CB953E006FC889 /* Spotify.h */,
+			);
+			path = ScriptingBridges;
+			sourceTree = "<group>";
+		};
 		64101B060F67BB2F84EBD6B2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -166,7 +180,10 @@
 		E9395D6F21A8814B0078CC5C /* AutoMute */ = {
 			isa = PBXGroup;
 			children = (
+				415A432621CB955D006FC889 /* ScriptingBridges */,
 				E9395DD821A9BC580078CC5C /* MJDisableMuteManager.h */,
+				415A432721CB9AFF006FC889 /* MediaController.m */,
+				415A432921CB9B1C006FC889 /* MediaController.h */,
 				E9395DDE21A9BC580078CC5C /* MJDisableMuteManager.m */,
 				E9395DE021A9BC580078CC5C /* MJHeadphoneDetector.cpp */,
 				E9395DDF21A9BC580078CC5C /* MJHeadphoneDetector.hpp */,
@@ -264,6 +281,11 @@
 				TargetAttributes = {
 					E9395D6C21A8814B0078CC5C = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.Mac = {
+								enabled = 0;
+							};
+						};
 					};
 					E9395DB021A9B91B0078CC5C = {
 						CreatedOnToolsVersion = 10.1;
@@ -351,6 +373,7 @@
 				E9395DC421A9BB220078CC5C /* StartAtLoginController.m in Sources */,
 				E9395DD421A9BC0E0078CC5C /* AppDelegate.mm in Sources */,
 				E9395DE621A9BC590078CC5C /* MJSoundMuter.cpp in Sources */,
+				415A432821CB9AFF006FC889 /* MediaController.m in Sources */,
 				E9395DE421A9BC590078CC5C /* YLStatusItemPopupDisplayer.m in Sources */,
 				E9395DE821A9BC590078CC5C /* MJHeadphoneDetector.cpp in Sources */,
 				E9395DD521A9BC0E0078CC5C /* LaunchAtLoginPopupView.m in Sources */,
